@@ -11,6 +11,7 @@ You have access to `opendataloader-pdf`, a powerful CLI tool for extracting stru
 - Extracting text, Markdown, or JSON from a PDF document.
 - Preparing PDF data for LLMs or RAG pipelines.
 - Parsing PDFs with complex tables or scanned images (requires hybrid mode).
+- Generating accessible Tagged PDFs.
 
 ## Environment Setup
 The tool is already installed globally on this machine.
@@ -26,13 +27,14 @@ opendataloader-pdf "C:\absolute\path\to\input.pdf" --format markdown,json --outp
 *Note: Always use absolute paths for the input file and output directory.*
 
 ## Hybrid Mode (Complex Tables, Scanned PDFs, OCR)
-Use hybrid mode if the PDF contains complex borderless tables or is a scanned image.
+Use hybrid mode if the PDF contains complex borderless tables, mathematical formulas, or is a scanned image.
 
 **Step 1: Start the Hybrid Server in the background**
 Choose the appropriate server command based on the need:
 - For complex tables: `opendataloader-pdf-hybrid --port 5002`
 - For scanned PDFs (OCR): `opendataloader-pdf-hybrid --port 5002 --force-ocr`
 - For non-English OCR: `opendataloader-pdf-hybrid --port 5002 --force-ocr --ocr-lang "ko,en"`
+- For formulas & charts: `opendataloader-pdf-hybrid --port 5002 --enrich-formula --enrich-picture-description`
 
 *Execute the server command as a background job or in a separate terminal process so it doesn't block.*
 
@@ -40,13 +42,15 @@ Choose the appropriate server command based on the need:
 ```powershell
 opendataloader-pdf --hybrid docling-fast "C:\absolute\path\to\input.pdf" --format markdown,json --output-dir "C:\absolute\path\to\output_folder"
 ```
+*(If extracting formulas/charts, add `--hybrid-mode full` to the client command)*
 
 ## Output Formats
 - `markdown`: Clean text preserving headings and table structures. Ideal for LLM context.
 - `json`: Structured data including bounding boxes (`[left, bottom, right, top]`) and semantic types (heading, paragraph, table).
 - `html`: Preserves layout for web rendering.
+- `tagged-pdf`: Generates a Tagged PDF for accessibility.
 
-Combine formats with commas: `--format markdown,json`.
+Combine formats with commas: `--format markdown,json,tagged-pdf`.
 
 ## Advanced Options & CLI Reference
 If the user asks for advanced formatting (like page separators, image extraction, password protection, parallel threads, etc.), read the CLI options reference file before executing the command:
