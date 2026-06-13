@@ -25,12 +25,23 @@ This skill empowers AI agents to extract Markdown, JSON, and HTML from PDFs, uti
 
 ## 🚀 Installation & Usage
 
-1. **Install the core tool** (requires Python 3.10+ and Java 11+):
-   ```bash
-   python -m pip install -U "opendataloader-pdf[hybrid]"
-   ```
-2. **Install this skill** for your AI agent. Clone this repository into your agent's skills directory (e.g., `~/.agents/skills/` or `~/.claude/skills/`):
-   ```bash
-   git clone https://github.com/lehoangphuc747/opendataloader-pdf-skill.git ~/.agents/skills/opendataloader-pdf
-   ```
-3. **Trigger the skill**: Simply ask your agent to "extract this PDF for my RAG pipeline" or "parse this scanned PDF using hybrid mode", and it will automatically use the knowledge from this repository!
+### 1. Install the core tool
+Requires Python 3.10+ and Java 11+:
+```bash
+python -m pip install -U "opendataloader-pdf[hybrid]"
+```
+
+### 2. Install this skill
+You can easily install this skill globally for your AI agents using the `skills` CLI:
+```bash
+npx skills add lehoangphuc747/opendataloader-pdf-skill -g
+```
+
+*(Alternatively, you can manually clone this repository into your agent's skills directory, e.g., `~/.agents/skills/opendataloader-pdf`)*
+
+### 3. Trigger the skill
+Simply ask your agent: 
+> *"Extract this PDF for my RAG pipeline"*
+> *"Parse this scanned PDF using hybrid mode"*
+
+The agent will automatically use the knowledge, CLI arguments, and Python scripts from this repository!
