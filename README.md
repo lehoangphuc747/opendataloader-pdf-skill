@@ -1,5 +1,7 @@
 # OpenDataLoader PDF Skill 🚀
 
+[![skills.sh](https://skills.sh/b/lehoangphuc747/opendataloader-pdf-skill)](https://skills.sh/lehoangphuc747/opendataloader-pdf-skill)
+
 A highly optimized, custom skill for AI agents (like Claude, OpenCode) to seamlessly interact with [OpenDataLoader PDF](https://github.com/opendataloader-project/opendataloader-pdf). 
 
 This skill empowers AI agents to extract Markdown, JSON, and HTML from PDFs, utilize Hybrid AI models for complex tables/OCR, and build efficient RAG pipelines.
